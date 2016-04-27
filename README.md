@@ -33,3 +33,10 @@
 3. SELECT Customer.FirstName || " " || Customer.LastName, Invoice.InvoiceId, Invoice.InvoiceDate, Invoice.BillingCountry FROM Customer INNER JOIN Invoice ON Invoice.CustomerId = Customer.CustomerId WHERE Customer.Country = "Brazil"
 4. SELECT Employee.FirstName || " " || Employee.LastName, Employee.Title FROM Employee WHERE Employee.Title = "Sales Support Agent"
 5. SELECT DISTINCT BillingCountry FROM Invoice
+6. SELECT
+Employee.FirstName || " " || Employee.LastName AS [Sales Rep],
+Customer.FirstName || " " || Customer.LastName AS [Customer],
+Invoice.InvoiceId, Invoice.CustomerId, Invoice.InvoiceDate, Invoice.Total
+FROM Invoice
+INNER JOIN Customer ON Customer.CustomerId = Invoice.CustomerId
+INNER JOIN Employee ON Employee.EmployeeId = Customer.SupportRepId
