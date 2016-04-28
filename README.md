@@ -66,7 +66,21 @@ INNER JOIN Track ON Track.TrackId = InvoiceLine.TrackId
 INNER JOIN Album ON Album.AlbumId = Track.AlbumId
 INNER JOIN Artist ON Artist.ArtistId = Album.ArtistId
 ORDER BY InvoiceLineId
-13. 
+13. SELECT Invoice.BillingCountry, COUNT(Invoice.InvoiceId) AS [# of Invoices] FROM Invoice
+GROUP BY Invoice.BillingCountry
+14. SELECT Playlist.Name AS [Playlist], Playlist.PlaylistId, COUNT(PlaylistTrack.PlaylistId) AS [# of Tracks]
+FROM Playlist
+INNER JOIN PlaylistTrack ON PlaylistTrack.PlaylistId = Playlist.PlaylistId
+GROUP BY Playlist.PlaylistId
+15. SELECT Track.Name AS [Track], 
+Album.Title AS [Album], 
+MediaType.Name AS [Media Type], 
+Genre.Name AS [Genre]
+FROM Track
+INNER JOIN Album ON Album.AlbumId = Track.AlbumId
+INNER JOIN MediaType ON MediaType.MediaTypeId = Track.MediaTypeId
+INNER JOIN Genre ON Genre.GenreId = Track.GenreId
+16. 
 
 
 
