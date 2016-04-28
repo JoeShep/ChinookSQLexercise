@@ -60,7 +60,13 @@ GROUP BY Invoice.InvoiceId;
 FROM InvoiceLine
 INNER JOIN Track ON Track.TrackId = InvoiceLine.TrackId
 ORDER BY InvoiceLineId
-12. 
+12. SELECT InvoiceLine.InvoiceLineId, Track.Name AS [Track], Artist.Name AS [Artist]
+FROM InvoiceLine
+INNER JOIN Track ON Track.TrackId = InvoiceLine.TrackId
+INNER JOIN Album ON Album.AlbumId = Track.AlbumId
+INNER JOIN Artist ON Artist.ArtistId = Album.ArtistId
+ORDER BY InvoiceLineId
+13. 
 
 
 
