@@ -89,9 +89,9 @@ FROM Employee
 INNER JOIN Customer ON Customer.SupportRepId = Employee.EmployeeId
 INNER JOIN Invoice ON Invoice.CustomerId = Customer.CustomerId
 GROUP BY Employee.LastName
--- Steve Johnson: $720.16
--- Margaret Park: $775.40
--- Jane Peacock: $833.04
+  * Steve Johnson: $720.16
+  * Margaret Park: $775.40
+  * Jane Peacock: $833.04
 18. 
 
 
