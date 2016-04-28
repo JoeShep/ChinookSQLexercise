@@ -80,7 +80,19 @@ FROM Track
 INNER JOIN Album ON Album.AlbumId = Track.AlbumId
 INNER JOIN MediaType ON MediaType.MediaTypeId = Track.MediaTypeId
 INNER JOIN Genre ON Genre.GenreId = Track.GenreId
-16. 
+16. SELECT Invoice.InvoiceId, COUNT(InvoiceLine.InvoiceId)
+FROM Invoice
+INNER JOIN InvoiceLine ON InvoiceLine.InvoiceId = Invoice.InvoiceId
+GROUP BY Invoice.InvoiceId
+17. SELECT Employee.FirstName || ' ' || Employee.LastName AS [Sales Agent], SUM(Invoice.Total) AS [Total Sales]
+FROM Employee
+INNER JOIN Customer ON Customer.SupportRepId = Employee.EmployeeId
+INNER JOIN Invoice ON Invoice.CustomerId = Customer.CustomerId
+GROUP BY Employee.LastName
+-- Steve Johnson: $720.16
+-- Margaret Park: $775.40
+-- Jane Peacock: $833.04
+18. 
 
 
 
