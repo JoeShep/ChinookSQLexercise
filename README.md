@@ -53,6 +53,7 @@ INNER JOIN Employee ON Employee.EmployeeId = Customer.SupportRepId
 SELECT SUM(Total) AS [2009 Total Sales] FROM Invoice WHERE InvoiceDate LIKE '%2009%' (2009 Total Sales: 449.46)
 
 SELECT SUM(Total) AS [2011 Total Sales] FROM Invoice WHERE InvoiceDate LIKE '%2011%' (2011 Total Sales: 469.58)
+
 9. SELECT COUNT(*) FROM InvoiceLine WHERE InvoiceId = 37 (4 records)
 10. SELECT Invoice.InvoiceId, COUNT(InvoiceLine.InvoiceId) AS NumberOfItems FROM InvoiceLine
 INNER JOIN Invoice
