@@ -92,7 +92,36 @@ GROUP BY Employee.LastName
   * Steve Johnson: $720.16
   * Margaret Park: $775.40
   * Jane Peacock: $833.04
-18. 
+18. SELECT [Sales Agent], MAX([Total Sales]) FROM (
+SELECT Employee.FirstName || ' ' || Employee.LastName AS [Sales Agent], SUM(Invoice.Total) AS [Total Sales]
+FROM Employee
+INNER JOIN Customer ON Customer.SupportRepId = Employee.EmployeeId
+INNER JOIN Invoice ON Invoice.CustomerId = Customer.CustomerId
+WHERE Invoice.InvoiceDate LIKE '%2009%'
+GROUP BY Employee.LastName
+)
+19. SELECT [Sales Agent], MAX([Total Sales]) FROM (
+SELECT Employee.FirstName || ' ' || Employee.LastName AS [Sales Agent], SUM(Invoice.Total) AS [Total Sales]
+FROM Employee
+INNER JOIN Customer ON Customer.SupportRepId = Employee.EmployeeId
+INNER JOIN Invoice ON Invoice.CustomerId = Customer.CustomerId
+--WHERE Invoice.InvoiceDate LIKE '%2009%'
+GROUP BY Employee.LastName
+)
+20. SELECT Employee.FirstName || ' ' || Employee.LastName AS [Sales Agent], COUNT(Customer.SupportRepId) AS [# of Customers]
+FROM Employee
+INNER JOIN Customer ON Customer.SupportRepId = Employee.EmployeeId
+GROUP BY Employee.LastName
+21. SELECT Invoice.BillingCountry AS [Country], SUM(Invoice.Total) AS [Total Sales]
+FROM Invoice
+GROUP BY Invoice.BillingCountry
+ORDER BY [Total Sales] DESC
+22. SELECT Track.Name AS Track, COUNT(InvoiceLine.TrackId) AS [Times Purchased]
+FROM Track
+INNER JOIN InvoiceLine ON InvoiceLine.TrackId = Track.TrackId
+GROUP BY Track.TrackId
+ORDER BY [Times Purchased] DESC
+23. 
 
 
 
