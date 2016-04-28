@@ -116,12 +116,37 @@ GROUP BY Employee.LastName
 FROM Invoice
 GROUP BY Invoice.BillingCountry
 ORDER BY [Total Sales] DESC
-22. SELECT Track.Name AS Track, COUNT(InvoiceLine.TrackId) AS [Times Purchased]
+22. SELECT Track.TrackId, Track.Name AS [Track Name], COUNT(InvoiceLine.TrackId) AS [Times Purchased]
 FROM Track
 INNER JOIN InvoiceLine ON InvoiceLine.TrackId = Track.TrackId
+INNER JOIN Invoice ON Invoice.InvoiceId = InvoiceLine.InvoiceId
+WHERE Invoice.InvoiceDate LIKE '%2013%'
 GROUP BY Track.TrackId
 ORDER BY [Times Purchased] DESC
-23. 
+23. SELECT Track.TrackId, Track.Name AS [Track Name], COUNT(InvoiceLine.TrackId) AS [Times Purchased]
+FROM Track
+INNER JOIN InvoiceLine ON InvoiceLine.TrackId = Track.TrackId
+INNER JOIN Invoice ON Invoice.InvoiceId = InvoiceLine.InvoiceId
+WHERE Invoice.InvoiceDate LIKE '%2013%'
+GROUP BY Track.TrackId
+ORDER BY [Times Purchased] DESC
+LIMIT 5
+24. SELECT Artist.Name, SUM(InvoiceLine.UnitPrice) AS [Total Sales]
+FROM Track
+INNER JOIN InvoiceLine ON InvoiceLine.TrackId = Track.TrackId
+INNER JOIN Invoice ON Invoice.InvoiceId = InvoiceLine.InvoiceId
+INNER JOIN Album ON Album.AlbumId = Track.AlbumId
+INNER JOIN Artist ON Artist.ArtistId = Album.ArtistId
+GROUP BY Artist.Name
+ORDER BY [Total Sales] DESC
+LIMIT 3
+25. SELECT MediaType.Name AS [Media Type], COUNT(InvoiceLine.InvoiceLineId) AS [Times Purchased]
+FROM MediaType
+INNER JOIN Track ON Track.MediaTypeId = MediaType.MediaTypeId
+INNER JOIN InvoiceLine ON InvoiceLine.TrackId = Track.TrackId
+GROUP BY MediaType.Name
+ORDER BY [Times Purchased] DESC
+LIMIT 1
 
 
 
