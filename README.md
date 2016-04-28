@@ -49,7 +49,9 @@ FROM Invoice
 INNER JOIN Customer ON Customer.CustomerId = Invoice.CustomerId
 INNER JOIN Employee ON Employee.EmployeeId = Customer.SupportRepId
 8. SELECT COUNT(*) FROM Invoice WHERE InvoiceDate LIKE '%2009%' OR InvoiceDate LIKE '%2011%' (249 records in 2009 or 2011)
+
 SELECT SUM(Total) AS [2009 Total Sales] FROM Invoice WHERE InvoiceDate LIKE '%2009%' (2009 Total Sales: 449.46)
+
 SELECT SUM(Total) AS [2011 Total Sales] FROM Invoice WHERE InvoiceDate LIKE '%2011%' (2011 Total Sales: 469.58)
 9. 
 
